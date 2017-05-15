@@ -607,6 +607,17 @@ def live_item_path_winfoss(config, arch):
 
 
 def live_item_paths(config, arch, item):
+    # FIXME: just for x64 platform, server project
+    if config["CDIMAGE_PREINSTALLED_LIVEFS"] and arch == "amd64" and item == "squashfs":
+        print("found %s/%s" % (config["CDIMAGE_LIVEFS_PATH"], "filesystem.squashfs"))
+        yield config["CDIMAGE_LIVEFS_PATH"]+"/filesystem.squashfs"
+    if config["CDIMAGE_PREINSTALLED_LIVEFS"] and arch == "amd64" and item == "manifest":
+        print("found %s/%s" % (config["CDIMAGE_LIVEFS_PATH"], "livecd.ubuntu-server.manifest"))
+        yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu-server.manifest"
+    if config["CDIMAGE_PREINSTALLED_LIVEFS"] and arch == "amd64" and item == "size":
+        print("found %s/%s" % (config["CDIMAGE_LIVEFS_PATH"], "filesystem.size"))
+        yield config["CDIMAGE_LIVEFS_PATH"]+"/filesystem.size"
+
     if item == "ltsp-squashfs" and arch == "amd64":
         # use i386 LTSP image on amd64 too
         arch = "i386"
@@ -857,7 +868,15 @@ def download_live_filesystems(config):
             config["CDIMAGE_PREINSTALLED"]):
         got_image = False
         for arch in config.arches:
-            if config["CDIMAGE_PREINSTALLED"]:
+            if config["CDIMAGE_PREINSTALLED_LIVEFS"]:
+                if project == "ubuntu-server":
+                    if download_live_items(config, arch, "squashfs"):
+                        got_image = True
+                    else:
+                        continue
+                else:
+                    continue
+            elif config["CDIMAGE_PREINSTALLED"]:
                 if project == "ubuntu-server":
                     if download_live_items(config, arch, "disk1.img.xz"):
                         got_image = True
