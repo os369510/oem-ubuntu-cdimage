@@ -2,8 +2,6 @@
 tasksel tasksel/force-tasks string server
 # Only install basic language packs. Let tasksel ask about tasks.
 d-i pkgsel/language-pack-patterns   string
-# Other extras packages
-d-i pkgsel/include string vim, htop, tree
 # No language support packages.
 d-i pkgsel/install-language-support boolean false
 # Verbose output and no boot splash screen.
@@ -11,12 +9,8 @@ d-i debian-installer/quiet  boolean false
 d-i debian-installer/splash boolean false
 # Install the debconf oem-config frontend (if in OEM mode).
 d-i oem-config-udeb/frontend    string debconf
-# Wait for two seconds in grub
-d-i grub-installer/timeout  string 2
 # Add the network and tasks oem-config steps by default.
 oem-config  oem-config/steps    multiselect language, timezone, keyboard, user, network, tasks
-# Running a Final Script
-d-i preseed/late_command string cp /cdrom/factory/postscript.sh /target/root/; chroot /target chmod +x /root/postscript.sh; chroot /target bash /root/postscript.sh
 # Hostname
 d-i netcfg/get_hostname string ubuntu-server
 d-i netcfg/get_domain string ubuntu-server
@@ -74,3 +68,11 @@ tasksel tasksel/first multiselect standard
 # "unattended-upgrades" (install security updates automatically), or
 # "landscape" (manage system with Landscape).
 d-i pkgsel/update-policy select none
+# Other extras packages
+d-i pkgsel/include string vim, htop, tree
+# Wait for two seconds in grub
+d-i grub-installer/timeout  string 2
+# Avoid that last message about the install being complete.
+d-i finish-install/reboot_in_progress note
+# Running a Final Script
+d-i preseed/late_command string cp /cdrom/factory/postscript.sh /target/root/; chroot /target chmod +x /root/postscript.sh; chroot /target bash /root/postscript.sh
