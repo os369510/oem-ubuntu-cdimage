@@ -32,6 +32,12 @@ def main():
     parser.add_option(
         "--live", default=False, action="store_true",
         help="build live filesystems first")
+    parser.add_option(
+        "--livefs", default="",
+        help="given path of filesystems", dest="livefs_path")
+    parser.add_option(
+        "--oem", default=False, action="store_true",
+        help="build oem custom image", dest="oem_build")
     options, _ = parser.parse_args()
 
     project = os.environ.get("PROJECT", None)
@@ -47,6 +53,8 @@ def main():
 
     config = Config(IMAGE_TYPE=image_type)
     config["CDIMAGE_LIVE"] = "1"
+    config["CDIMAGE_PREINSTALLED_LIVEFS"] = str(options.oem_build)
+    config["CDIMAGE_LIVEFS_PATH"] = options.livefs_path
     if not build_image_set(config, options):
         sys.exit(1)
 

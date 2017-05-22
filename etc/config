@@ -14,7 +14,7 @@ export LC_ALL=C
 
 DEBUG=1
 VERBOSE=3
-LIVECD="http://cdimage.ubuntu.com/ubuntu-server"
+LIVECD="http://cdimage.ubuntu.com/ubuntu"
 
 #PROJECT="${PROJECT:-ubuntu}"
 #CAPPROJECT="${CAPPROJECT:-Ubuntu}"
