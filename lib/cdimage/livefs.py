@@ -610,21 +610,18 @@ def live_item_paths(config, arch, item):
     project = config.project
     # FIXME: just for x64 platform, server project
     if (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
-            arch == "amd64" and
             item == "squashfs"):
         print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"], 
             "filesystem.squashfs"))
         yield config["CDIMAGE_LIVEFS_PATH"]+"/filesystem.squashfs"
     elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and 
             project == "ubuntu-server" and
-            arch == "amd64" and
             item == "manifest"):
         print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
             "livecd.ubuntu-server.manifest"))
         yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu-server.manifest"
     elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
             project == "ubuntu" and
-            arch == "amd64" and
             item == "manifest"):
         print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
             "livecd.ubuntu.manifest"))
@@ -644,7 +641,6 @@ def live_item_paths(config, arch, item):
             "livecd.ubuntu.initrd-generic"))
         yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu.initrd-generic"
     elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
-            arch == "amd64" and
             item == "size"):
         print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
             "filesystem.size"))
