@@ -209,10 +209,9 @@ def anonftpsync(config):
 
             subprocess.call(
                 command_base + [
-#                    "--exclude", "Packages*", "--exclude", "Sources*",
-#                    "--exclude", "Release*", "--exclude", "InRelease",
+                    #"--exclude", "Packages*", "--exclude", "Sources*",
+                    #"--exclude", "Release*", "--exclude", "InRelease",
                     "--include", "i18n/by-hash/**", "--exclude", "i18n/*",
-                    "--include", "indices/override.x*",
                 ] + include + exclude + source_target,
                 stdout=log, stderr=subprocess.STDOUT, env=env)
 
