@@ -334,6 +334,8 @@ def live_lp_info(config, arch):
 
 
 def get_lp_livefs(config, arch):
+    # FIXME: OEM project won't use livefs
+    return None, None
     try:
         lp_info = live_lp_info(config, arch)
     except UnknownLaunchpadLiveFS:
@@ -610,7 +612,7 @@ def live_item_path_winfoss(config, arch):
 
 def live_item_paths(config, arch, item):
     project = config.project
-    # FIXME: just for x64 platform, server project
+    # FIXME: just for OEM project
     if (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
             item == "squashfs"):
         print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"], 
