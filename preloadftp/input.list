@@ -5303,8 +5303,7 @@ linux-cloud-tools-4.4.0-*-aws*_amd64.deb
 linux-cloud-tools-4.4.0-*-generic*_amd64.deb
 linux-cloud-tools-4.4.0-*-kvm*_amd64.deb
 linux-cloud-tools-4.4.0-*-lowlatency*_amd64.deb
-linux-cloud-tools-4.4.0-87*_amd64.deb
-linux-cloud-tools-4.4.0-98*_amd64.deb
+linux-cloud-tools-4.4.0-*_amd64.deb
 linux-cloud-tools-azure*_amd64.deb
 linux-cloud-tools-common*_all.deb
 linux-cloud-tools-generic*_amd64.deb
@@ -5342,8 +5341,7 @@ linux-headers-4.4.0-*-aws*_amd64.deb
 linux-headers-4.4.0-*-generic*_amd64.deb
 linux-headers-4.4.0-*-kvm*_amd64.deb
 linux-headers-4.4.0-*-lowlatency*_amd64.deb
-linux-headers-4.4.0-87*_all.deb
-linux-headers-4.4.0-98*_all.deb
+linux-headers-4.4.0-*_all.deb
 linux-headers-aws*_amd64.deb
 linux-headers-azure*_amd64.deb
 linux-headers-generic*_amd64.deb
@@ -5465,8 +5463,7 @@ linux-tools-4.4.0-*-aws*_amd64.deb
 linux-tools-4.4.0-*-generic*_amd64.deb
 linux-tools-4.4.0-*-kvm*_amd64.deb
 linux-tools-4.4.0-*-lowlatency*_amd64.deb
-linux-tools-4.4.0-87*_amd64.deb
-linux-tools-4.4.0-98*_amd64.deb
+linux-tools-4.4.0-*_amd64.deb
 linux-tools-aws*_amd64.deb
 linux-tools-azure*_amd64.deb
 linux-tools-common*_all.deb
