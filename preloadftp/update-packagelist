@@ -67,8 +67,8 @@ with open('xenial-classic.list', 'w') as out:
                     #print(temp.split('*'))
                     pkg_name = temp.split('*')
                     apt_pkg = cache[pkg_name[0]]
-                    ver = apt_pkg.versions
-                    pkg_info = str(ver[0]).split('=')
+                    ver = apt_pkg.candidate
+                    pkg_info = str(ver).split('=')
                     #print(pkg_info)
                     if ":" not in pkg_info[1]:
                         pkg_file = pkg_info[0] + '_' + pkg_info[1] + pkg_name[1]
