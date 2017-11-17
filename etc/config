@@ -90,4 +90,6 @@ TRIGGER_MIRRORS_ASYNC=
 export TRIGGER_MIRRORS
 export TRIGGER_MIRRORS_ASYNC
 
+export CDIMAGE_OEM_PARAMS="locale=en_US keyboard-configuration/layoutcode=us oem-config/enable=true"
+
 umask 002
