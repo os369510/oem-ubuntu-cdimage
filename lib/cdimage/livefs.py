@@ -342,6 +342,8 @@ def live_lp_info(config, arch):
 
 
 def get_lp_livefs(config, arch):
+    # FIXME: OEM project won't use livefs
+    return None, None
     try:
         lp_info = live_lp_info(config, arch)
     except UnknownLaunchpadLiveFS:
@@ -617,11 +619,56 @@ def live_item_path_winfoss(config, arch):
 
 
 def live_item_paths(config, arch, item):
+    project = config.project
+    # FIXME: just for OEM project
+    if (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
+            item == "squashfs"):
+        print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
+            "filesystem.squashfs"))
+        yield config["CDIMAGE_LIVEFS_PATH"]+"/filesystem.squashfs"
+    elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
+            project == "ubuntu-server" and
+            item == "manifest"):
+        print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
+            "livecd.ubuntu-server.manifest"))
+        yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu-server.manifest"
+    elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
+            project == "ubuntu" and
+            item == "manifest"):
+        print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
+            "livecd.ubuntu.manifest"))
+        yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu.manifest"
+    elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
+            project == "ubuntu" and
+            arch == "amd64" and
+            item == "kernel"):
+        print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
+            "livecd.ubuntu.kernel-generic"))
+        yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu.kernel-generic"
+    elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
+            project == "ubuntu" and
+            arch == "amd64" and
+            item == "initrd"):
+        print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
+            "livecd.ubuntu.initrd-generic"))
+        yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu.initrd-generic"
+    elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
+            item == "size"):
+        print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
+            "filesystem.size"))
+        yield config["CDIMAGE_LIVEFS_PATH"]+"/filesystem.size"
+    elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
+            project == "ubuntu" and
+            arch == "amd64" and
+            item == "kernel-efi-signed"):
+        print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
+            "livecd.ubuntu.kernel-generic.efi.signed"))
+        yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu.kernel-generic.efi.signed"
+
     if item == "ltsp-squashfs" and arch == "amd64":
         # use i386 LTSP image on amd64 too
         arch = "i386"
     cpuarch, subarch = split_arch(arch)
-    project = config.project
     series = config["DIST"]
     liveproject = live_project(config, arch)
     if subarch:
@@ -762,6 +809,7 @@ def download_live_items(config, arch, item):
             try:
                 osextras.fetch(config, url, target)
                 found = True
+                break
             except osextras.FetchError:
                 pass
     elif item in (
@@ -808,6 +856,7 @@ def download_live_items(config, arch, item):
             try:
                 osextras.fetch(config, url, target)
                 found = True
+                break
             except osextras.FetchError:
                 pass
     elif item in ("wubi", "umenu", "usb-creator"):
@@ -869,7 +918,20 @@ def download_live_filesystems(config):
             config["CDIMAGE_PREINSTALLED"]):
         got_image = False
         for arch in config.arches:
-            if config["CDIMAGE_PREINSTALLED"]:
+            if config["CDIMAGE_PREINSTALLED_LIVEFS"]:
+                if project == "ubuntu-server":
+                    if download_live_items(config, arch, "squashfs"):
+                        got_image = True
+                    else:
+                        continue
+                elif project == "ubuntu":
+                    if download_live_items(config, arch, "squashfs"):
+                        got_image = True
+                    else:
+                        continue
+                else:
+                    continue
+            elif config["CDIMAGE_PREINSTALLED"]:
                 if project == "ubuntu-server":
                     if download_live_items(config, arch, "disk1.img.xz"):
                         got_image = True
