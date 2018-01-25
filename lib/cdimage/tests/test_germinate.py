@@ -93,7 +93,10 @@ class TestGermination(TestCase):
             ("mythbuntu", "raring", ["mythbuntu-dev", "ubuntu-core-dev"]),
             ("xubuntu", "hardy", ["ubuntu-core-dev"]),
             ("xubuntu", "intrepid", ["xubuntu-dev", "ubuntu-core-dev"]),
+<<<<<<< HEAD
             ("lubuntu", "raring", ["lubuntu-dev", "ubuntu-core-dev"]),
+=======
+>>>>>>> aa1f72a2b4cefbb306c797a3dea6009629f5065e
             ("ubuntu-gnome", "raring",
              ["ubuntu-gnome-dev", "ubuntu-core-dev"]),
             ("ubuntu-budgie", "zesty",
@@ -111,13 +114,32 @@ class TestGermination(TestCase):
                 for owner in owners]
             self.assertEqual(sources, self.germination.seed_sources(project))
 
+<<<<<<< HEAD
     def test_seed_sources_non_bzr(self):
         self.germination = Germination(self.config, prefer_bzr=False)
+=======
+        for project, series, owners in (
+            ("lubuntu", "raring", ["lubuntu-dev"]),
+        ):
+            self.config["DIST"] = series
+            sources = [
+                "https://git.launchpad.net/~%s/ubuntu-seeds/+git/" % owner
+                for owner in owners]
+            if "ubuntu-core-dev" not in owners:
+                sources.append(
+                    "http://bazaar.launchpad.net/~ubuntu-core-dev/"
+                    "ubuntu-seeds/")
+            self.assertEqual(sources, self.germination.seed_sources(project))
+
+    def test_seed_sources_non_bzr(self):
+        self.germination = Germination(self.config, prefer_vcs=False)
+>>>>>>> aa1f72a2b4cefbb306c797a3dea6009629f5065e
         self.config["DIST"] = "raring"
         self.assertEqual(
             ["http://people.canonical.com/~ubuntu-archive/seeds/"],
             self.germination.seed_sources("ubuntu"))
 
+<<<<<<< HEAD
     def test_use_bzr_local_seeds(self):
         self.config["LOCAL_SEEDS"] = "http://www.example.org/"
         self.assertFalse(self.germination.use_bzr)
@@ -127,6 +149,17 @@ class TestGermination(TestCase):
         self.assertTrue(self.germination.use_bzr)
         self.germination.prefer_bzr = False
         self.assertFalse(self.germination.use_bzr)
+=======
+    def test_use_vcs_local_seeds(self):
+        self.config["LOCAL_SEEDS"] = "http://www.example.org/"
+        self.assertFalse(self.germination.use_vcs)
+
+    def test_use_vcs_honours_preference(self):
+        self.assertTrue(self.germination.prefer_vcs)
+        self.assertTrue(self.germination.use_vcs)
+        self.germination.prefer_vcs = False
+        self.assertFalse(self.germination.use_vcs)
+>>>>>>> aa1f72a2b4cefbb306c797a3dea6009629f5065e
 
     def test_make_index(self):
         self.config.root = self.use_temp_dir()
@@ -251,7 +284,11 @@ class TestGermination(TestCase):
             "--arch", "amd64",
             "--components", "main",
             "--no-rdepends",
+<<<<<<< HEAD
             "--bzr",
+=======
+            "--vcs=auto",
+>>>>>>> aa1f72a2b4cefbb306c797a3dea6009629f5065e
         ]
         self.assertEqual(1, mock_check_call.call_count)
         self.assertEqual(expected_command, mock_check_call.call_args[0][0])
