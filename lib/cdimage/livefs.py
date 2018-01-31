@@ -620,6 +620,7 @@ def live_item_path_winfoss(config, arch):
 
 def live_item_paths(config, arch, item):
     project = config.project
+    subproject = config.subproject
     # FIXME: just for OEM project
     if (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
             item == "squashfs"):
@@ -628,6 +629,7 @@ def live_item_paths(config, arch, item):
         yield config["CDIMAGE_LIVEFS_PATH"]+"/filesystem.squashfs"
     elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
             project == "ubuntu-server" and
+	    subproject == "live" and
             item == "installer.squashfs"):
         print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
             "livecd.ubuntu-server.installer.squashfs"))
@@ -652,6 +654,14 @@ def live_item_paths(config, arch, item):
             "livecd.ubuntu.kernel-generic"))
         yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu.kernel-generic"
     elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
+            project == "ubuntu-server" and
+	    subproject == "live" and
+            arch == "amd64" and
+            item == "kernel"):
+        print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
+            "livecd.ubuntu-server.kernel-generic"))
+        yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu-server.kernel-generic"
+    elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
             project == "ubuntu" and
             arch == "amd64" and
             item == "initrd"):
@@ -659,6 +669,15 @@ def live_item_paths(config, arch, item):
             "livecd.ubuntu.initrd-generic"))
         yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu.initrd-generic"
     elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
+            project == "ubuntu-server" and
+	    subproject == "live" and
+            arch == "amd64" and
+            item == "initrd"):
+        print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
+            "livecd.ubuntu.initrd-generic"))
+        yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu-server.initrd-generic"
+    elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
+            project == "ubuntu" and
             item == "size"):
         print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
             "filesystem.size"))
