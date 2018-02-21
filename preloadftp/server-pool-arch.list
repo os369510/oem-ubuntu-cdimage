@@ -369,6 +369,7 @@ libdmraid1.0.0.rc16*_amd64.deb
 libdns162*_amd64.deb
 libdpkg-perl*_all.deb
 libdrm2*_amd64.deb
+libdrm-common*_all.deb
 libdumbnet1*_amd64.deb
 libecap3*_amd64.deb
 libecj-java*_all.deb
@@ -452,6 +453,7 @@ libhttp-date-perl*_all.deb
 libhttp-message-perl*_all.deb
 libhttp-negotiate-perl*_all.deb
 libhx28*_amd64.deb
+libibverbs1*_amd64.deb
 libhx509-5-heimdal*_amd64.deb
 libibverbs1*_amd64.deb
 libicu55*_amd64.deb
@@ -838,6 +840,7 @@ nmap*_amd64.deb
 ntfs-3g*_amd64.deb
 ntp*_amd64.deb
 ntpdate*_amd64.deb
+numactl*_amd64.deb
 nut*_all.deb
 nut-cgi*_amd64.deb
 nut-client*_amd64.deb
