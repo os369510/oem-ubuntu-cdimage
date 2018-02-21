@@ -319,6 +319,10 @@ class TestPublisherWebIndices(TestCase):
             ("kubuntu", ["http://releases.ubuntu.com/include/kubuntu.css"]),
             ("kubuntu-plasma5",
              ["http://releases.ubuntu.com/include/kubuntu-plasma5.css"]),
+            ("lubuntu",
+             ["http://cdimage.ubuntu.com/include/lubuntu/style.css"]),
+            ("lubuntu-next",
+             ["http://cdimage.ubuntu.com/include/lubuntu/style.css"]),
         ):
             self.config["PROJECT"] = project
             publisher = Publisher(self.tree, "daily")
@@ -695,6 +699,12 @@ class TestDailyTreePublisher(TestCase):
             os.path.join(
                 self.config.root, "www", "full", "ubuntu-core",
                 self.config.core_series, "edge"),
+            self.make_publisher("ubuntu-core", "daily-live").publish_base)
+        self.config["CHANNEL"] = 'stable'
+        self.assertEqual(
+            os.path.join(
+                self.config.root, "www", "full", "ubuntu-core",
+                self.config.core_series, "stable"),
             self.make_publisher("ubuntu-core", "daily-live").publish_base)
         self.assertEqual(
             os.path.join(

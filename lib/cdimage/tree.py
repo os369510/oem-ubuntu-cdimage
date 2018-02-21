@@ -476,6 +476,8 @@ class Publisher:
             return ["http://releases.ubuntu.com/include/kubuntu.css"]
         if self.project == "kubuntu-plasma5":
             return ["http://releases.ubuntu.com/include/kubuntu-plasma5.css"]
+        if self.project in ("lubuntu", "lubuntu-next"):
+            return ["http://cdimage.ubuntu.com/include/lubuntu/style.css"]
         else:
             return ["http://releases.ubuntu.com/include/style.css"]
 
@@ -1191,10 +1193,6 @@ class Publisher:
                     "<link "
                     "href='http://fonts.googleapis.com/css?family=Ubuntu' "
                     "rel='stylesheet' type='text/css'>", file=header)
-                print(
-                    "<link rel=\"icon\" type=\"image/png\" "
-                    "href=\"http://www.kubuntu.org/themes/kubuntu10.04/"
-                    "favicon.ico\">", file=header)
             if self.project == "kubuntu-plasma5":
                 print(
                     "<link "
@@ -1205,16 +1203,25 @@ class Publisher:
                     "<link rel=\"icon\" type=\"image/png\" "
                     "href=\"http://www.kubuntu.org/themes/kubuntu10.04/"
                     "favicon.ico\">", file=header)
+            if self.project in ("lubuntu", "lubuntu-next"):
+                print(
+                    "<link rel=\"icon\" type=\"image/png\" "
+                    "href=\"http://cdimage.ubuntu.com/include/lubuntu/"
+                    "favicon.png\" />", file=header)
+                header_href = 'https://lubuntu.me/'
+            else:
+                header_href = 'http://www.ubuntu.com/'
+
             print(dedent("""\
                 </head>
                 <body><div id="pageWrapper">
 
-                <div id="header"><a href="http://www.ubuntu.com/"></a></div>
+                <div id="header"><a href="%s"></a></div>
 
                 <h1>%s</h1>
 
                 <div id="main">
-                """) % heading, file=header)
+                """) % (header_href, heading), file=header)
 
             mirrors_url = "http://www.ubuntu.com/getubuntu/downloadmirrors"
             reldir = os.path.realpath(directory)
@@ -1709,7 +1716,8 @@ class DailyTreePublisher(Publisher):
     def image_type_dir(self):
         if (self.config.project == "ubuntu-core" and
                 self.image_type == 'daily-live'):
-            return os.path.join(self.config.core_series, 'edge')
+            channel = self.config.get("CHANNEL", "edge")
+            return os.path.join(self.config.core_series, channel)
         image_type_dir = self.image_type.replace("_", "/")
         if (self.config.distribution != "ubuntu" or
                 not self.config["DIST"].is_latest):
