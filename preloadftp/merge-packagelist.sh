@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sudo apt-get update
+
 cat server-pool-arch.list desktop-pool-arch.list | sort -u > bionic-classic-arch.list
 sed 's/\*_\(amd64\|all\).deb//g' bionic-classic-arch.list > bionic-classic-pkgname.list
 
