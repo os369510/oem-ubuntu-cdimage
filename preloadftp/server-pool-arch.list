@@ -296,7 +296,7 @@ libavahi-glib1*_amd64.deb
 libavc1394-0*_amd64.deb
 libberkeleydb-perl*_amd64.deb
 libb-hooks-endofscope-perl*_all.deb
-libbind9-140*_amd64.deb
+libbind9-160*_amd64.deb
 libbinutils*_amd64.deb
 libblas3*_amd64.deb
 libblkid1*_amd64.deb
@@ -383,7 +383,7 @@ libdjvulibre21*_amd64.deb
 libdjvulibre-text*_all.deb
 libdlm3*_amd64.deb
 libdmraid1.0.0.rc16*_amd64.deb
-libdns162*_amd64.deb
+libdns169*_amd64.deb
 libdpkg-perl*_all.deb
 libdrm2*_amd64.deb
 libdrm-common*_all.deb
@@ -434,7 +434,7 @@ libgcc1*_amd64.deb
 libgcc-7-dev*_amd64.deb
 libgcrypt20*_amd64.deb
 libgd3*_amd64.deb
-libgdbm3*_amd64.deb
+libgdbm5*_amd64.deb
 libgdk-pixbuf2.0-0*_amd64.deb
 libgdk-pixbuf2.0-bin*_amd64.deb
 libgdk-pixbuf2.0-common*_all.deb
@@ -510,9 +510,9 @@ libipmidetect0*_amd64.deb
 libiptc0*_amd64.deb
 libirs160*_amd64.deb
 libirs-export160*_amd64.deb
-libisc160*_amd64.deb
-libisccc140*_amd64.deb
-libisccfg140*_amd64.deb
+libisc166*_amd64.deb
+libisccc160*_amd64.deb
+libisccfg160*_amd64.deb
 libisccfg-export160*_amd64.deb
 libiscsi7*_amd64.deb
 libisl15*_amd64.deb
@@ -553,7 +553,7 @@ liblockfile1*_amd64.deb
 liblockfile-bin*_amd64.deb
 liblouis14*_amd64.deb
 liblouis-data*_all.deb
-liblouisutdml7*_amd64.deb
+liblouisutdml8*_amd64.deb
 liblouisutdml-bin*_amd64.deb
 liblouisutdml-data*_all.deb
 liblqr-1-0*_amd64.deb
@@ -567,7 +567,7 @@ liblvm2app2.2*_amd64.deb
 liblvm2cmd2.02*_amd64.deb
 liblwp-mediatypes-perl*_all.deb
 liblwp-protocol-https-perl*_all.deb
-liblwres141*_amd64.deb
+liblwres160*_amd64.deb
 liblxc1*_amd64.deb
 liblz4-1*_amd64.deb
 liblzma5*_amd64.deb
@@ -585,7 +585,7 @@ libmodule-runtime-perl*_all.deb
 libmoo-perl*_all.deb
 libmount1*_amd64.deb
 libmpc3*_amd64.deb
-libmpfr4*_amd64.deb
+libmpfr6*_amd64.deb
 libmpx2*_amd64.deb
 libmspack0*_amd64.deb
 libmysqlclient20*_amd64.deb
@@ -681,7 +681,7 @@ libpod-constants-perl*_all.deb
 libpolkit-agent-1-0*_amd64.deb
 libpolkit-backend-1-0*_amd64.deb
 libpolkit-gobject-1-0*_amd64.deb
-libpoppler68*_amd64.deb
+libpoppler73*_amd64.deb
 libpq5*_amd64.deb
 libprocps6*_amd64.deb
 libproc-waitstat-perl*_all.deb
@@ -727,7 +727,7 @@ libsigc++-2.0-0v5*_amd64.deb
 libsigsegv2*_amd64.deb
 libsmartcols1*_amd64.deb
 libsmbclient*_amd64.deb
-libsmbios2v5*_amd64.deb
+libsmbios-c2*_amd64.deb
 libsndfile1*_amd64.deb
 libsnmp30*_amd64.deb
 libsnmp-base*_all.deb
