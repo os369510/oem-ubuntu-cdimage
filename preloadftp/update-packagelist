@@ -42,17 +42,19 @@ def main():
                         pkg_file = pkg_name + '_' + pkg_info[1].split(':')[1] + '_' + pkg_dicts[pkg_name] +".deb"
                     out.write(pkg_file + '\n')
                 except KeyError as err:
-                    if pkg_name == "linux-headers-4.4.0-":
+                    if pkg_name == "linux-headers-4.15.0-":
                         pkg_file = pkg_name + "*_all.deb"
                         debug_print(options.enable_debug, "can't find: "+pkg_file)
                         out.write(pkg_file + '\n')
-                    elif pkg_name == "linux-headers-4.4.0-*-generic" or \
-                            pkg_name == "linux-image-4.4.0-*-generic" or pkg_name == "linux-image-extra-4.4.0-*-generic" or \
-                            pkg_name == "linux-signed-image-4.4.0-*-generic":
+                    elif pkg_name == "linux-headers-4.15.0-*-generic" or \
+                            pkg_name == "linux-modules-4.15.0-*-generic" or pkg_name == "linux-modules-extra-4.15.0-*-generic" or \
+                            pkg_name == "linux-image-4.15.0-*-generic" or pkg_name == "linux-image-extra-4.15.0-*-generic" or \
+                            pkg_name == "linux-signed-image-4.15.0-*-generic":
                         pkg_file = pkg_name + "*_amd64.deb"
                         debug_print(options.enable_debug, "can't find: "+pkg_file)
                         out.write(pkg_file + '\n')
                     else:
+                        debug_print(options.enable_debug, "can't find: "+pkg_name)
                         out.write(line)
 
 if __name__ == "__main__":
