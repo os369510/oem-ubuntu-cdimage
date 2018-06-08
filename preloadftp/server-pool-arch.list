@@ -165,6 +165,7 @@ fwupdate-signed*_amd64.deb
 g++-7*_amd64.deb
 g++*_amd64.deb
 gawk*_amd64.deb
+gcc-7-base*_amd64.deb
 gcc-8*_amd64.deb
 gcc-8-base*_amd64.deb
 gcc*_amd64.deb
