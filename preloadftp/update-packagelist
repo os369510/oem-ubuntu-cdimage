@@ -55,6 +55,7 @@ def main():
                         debug_print(options.enable_debug, "can't find: "+pkg_file)
                         out.write(pkg_file + '\n')
                     else:
+                        debug_print(options.enable_debug, "can't find: "+pkg_name)
                         out.write(line)
 
 if __name__ == "__main__":
