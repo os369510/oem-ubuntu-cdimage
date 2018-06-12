@@ -7,6 +7,7 @@ aide*_amd64.deb
 aide-common*_all.deb
 alsa-utils*_amd64.deb
 amavisd-new*_all.deb
+amd64-microcode*_amd64.deb
 anacron*_amd64.deb
 apache2*_amd64.deb
 apache2-bin*_amd64.deb
@@ -635,7 +636,7 @@ libpython2.7-stdlib*_amd64.deb
 libpython3.5*_amd64.deb
 libpython-stdlib*_amd64.deb
 libqb0*_amd64.deb
-libqpdf17*_amd64.deb
+libqpdf21*_amd64.deb
 libquadmath0*_amd64.deb
 libquorum5*_amd64.deb
 librados2*_amd64.deb
@@ -750,6 +751,8 @@ libxml2-utils*_amd64.deb
 libxml-commons-external-java*_all.deb
 libxml-commons-resolver1.1-java*_all.deb
 libxmlrpc-epi0*_amd64.deb
+libxmlsec1*_amd64.deb
+libxmlsec1-openssl*_amd64.deb
 libxmuu1*_amd64.deb
 libxpm4*_amd64.deb
 libxrender1*_amd64.deb
