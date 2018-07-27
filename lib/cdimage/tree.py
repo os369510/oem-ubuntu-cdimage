@@ -3038,7 +3038,7 @@ class ReleasePublisher(Publisher):
     def want_manifest(self, publish_type, path):
         if publish_type in (
             "live", "desktop", "netbook", "mid", "moblin-remix",
-            "uec", "server-uec", "core", "wubi",
+            "uec", "server-uec", "core", "wubi", "server", "live-server",
         ):
             return True
         elif publish_type.startswith("preinstalled") and os.path.exists(path):
