@@ -192,7 +192,7 @@ all_series.extend([
     Series("artful", "17.10", "Artful Aardvark"),
     Series(
         "bionic", "18.04", "Bionic Beaver",
-        pointversion="18.04.1",
+        pointversion="18.04.1.0",
         all_lts_projects=True),
 
     Series("14.09", "14.09", "RTM 14.09", distribution="ubuntu-rtm"),
