@@ -657,13 +657,6 @@ def live_item_paths(config, arch, item):
         print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
             "filesystem.size"))
         yield config["CDIMAGE_LIVEFS_PATH"]+"/filesystem.size"
-    elif (config["CDIMAGE_PREINSTALLED_LIVEFS"] and
-            project == "ubuntu" and
-            arch == "amd64" and
-            item == "kernel-efi-signed"):
-        print("finding %s/%s" % (config["CDIMAGE_LIVEFS_PATH"],
-            "livecd.ubuntu.kernel-generic.efi.signed"))
-        yield config["CDIMAGE_LIVEFS_PATH"]+"/livecd.ubuntu.kernel-generic.efi.signed"
 
     if item == "ltsp-squashfs" and arch == "amd64":
         # use i386 LTSP image on amd64 too
