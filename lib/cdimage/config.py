@@ -197,6 +197,9 @@ all_series.extend([
     Series("cosmic", "18.10", "Cosmic Cuttlefish"),
     Series("disco", "19.04", "Disco Dingo"),
     Series("eoan", "19.10", "Eoan Ermine"),
+    Series(
+        "focal", "20.04", "Focal Fossa",
+        all_lts_projects=True),
 
     Series("14.09", "14.09", "RTM 14.09", distribution="ubuntu-rtm"),
     Series(
@@ -442,6 +445,8 @@ class Config(defaultdict):
             return '16'
         if self["DIST"] >= "bionic":
             return '18'
+        if self["DIST"] >= "focal":
+            return '20'
         return None
 
     def export(self):
